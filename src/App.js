@@ -8,7 +8,11 @@ function App() {
   const [category, setCategory] = useState("");
   const [showCategory, setShowCategory] = useState([]);
 
-  const fetchApi = async () => {
+ 
+  
+
+  useEffect(() => {
+     const fetchApi = async () => {
     const api = `https://inshorts.deta.dev/news?category=${category}`;
     const res = await fetch(api);
     const data = await res.json();
@@ -16,9 +20,6 @@ function App() {
     // setCategory(data)
     setShowCategory(data.data);
   };
-  
-
-  useEffect(() => {
     fetchApi();
   }, [category]);
 
